@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LAPTOP-QTNUSH09.CoSupply_DW"
+  DTS:DTSID="{E324FBED-EB3B-4515-9941-04897975693D}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=LAPTOP-QTNUSH09;Initial Catalog=CoSupply_DW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-CoSupply_ETL-{E324FBED-EB3B-4515-9941-04897975693D}LAPTOP-QTNUSH09.CoSupply_DW;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

@@ -1,0 +1,142 @@
+Nhom 9: Sciprt
+
+
+
+# dim date
+
+CREATE TABLE [Dim_Date] (
+    [Full Day] datetime,
+    [Year] int,
+    [Quarter] int,
+    [Month] int,
+    [Day] int,
+    [Hour] int,
+    [Minute] int,
+    [Date Key] nvarchar(70),
+    CONSTRAINT PK_Date PRIMARY KEY ([Date Key])
+)
+# dim category
+CREATE TABLE [Dim_Category] (
+    [Category Id] int,
+    [Category Name] varchar(50),
+    CONSTRAINT PK_Category PRIMARY KEY ([Category Id]) 
+)
+
+# dim location
+CREATE TABLE [Dim_Location] (
+    [Location Id] int not null,
+    [Customer Street] varchar(50),
+    [Customer City] varchar(50),
+    [Customer Country] varchar(50),
+    [Customer State] varchar(50),
+    CONSTRAINT PK_Location PRIMARY KEY ([Location Id])
+)
+
+# date key 
+(DT_STR,14,1252)DATEPART("yyyy", [Full Day]) + RIGHT("0" + (DT_STR,2,1252)DATEPART("mm", [Full Day]), 2) + RIGHT("0" + (DT_STR,2,1252)DATEPART("dd", [Full Day]), 2) + RIGHT("0" + (DT_STR,2,1252)DATEPART("hh", [Full Day]), 2) + RIGHT("0" + (DT_STR,2,1252)DATEPART("mi", [Full Day]), 2)
+
+
+# dim department
+CREATE TABLE [Dim_Department] (
+    [Department Id] int,
+    [Department Name] varchar(50),
+    CONSTRAINT PK_Department PRIMARY KEY ([Department Id])
+)
+
+# dim ship
+CREATE TABLE [Dim_Ship] (
+    [Ship Key] int identity not null,
+    [Delivery Status] varchar(50),
+    [Shipping Mode] varchar(50),
+    [Ship Id] int,
+    [Days for shipping (real)] int,
+    [Days for shipment (scheduled)] int,
+    CONSTRAINT PK_Ship PRIMARY KEY ([Ship Key])
+)
+
+
+# dim status
+CREATE TABLE [Dim_Status] (
+    [Status Key] int identity not null,
+    [Order Status] varchar(50),
+    [Status Id] int,
+    CONSTRAINT PK_Status PRIMARY KEY ([Status Key])
+)
+
+
+# dim purchase
+CREATE TABLE [Dim_Purchase] (
+    [Purchase Key] int identity not null,
+    [Type] varchar(50),
+    [Type Id] int,
+    CONSTRAINT PK_Purchase PRIMARY KEY ([Purchase Key])
+)
+
+
+
+# dim customer
+CREATE TABLE [Dim_Customer] (
+    [Customer Key] int identity not null,
+    [Customer Id] int,
+    [Customer Fname] varchar(50),
+    [Customer Lname] varchar(50),
+    [Location Id] int,
+    CONSTRAINT PK_Customer PRIMARY KEY ([Customer Key]),
+    constraint FK_LocationId foreign key ([Location Id]) references Dim_Location ([Location Id])
+)
+
+
+# dim product
+CREATE TABLE [Dim_Product] (
+    [Product Key] int identity not null,
+    [Product Card Id] int,
+    [Product Name] varchar(50),
+    [Product Price] real,
+    [Product Image] varchar(255),
+    [Product Category Id] int,
+    [Department Id] int,
+    CONSTRAINT PK_Product PRIMARY KEY ([Product Key]),
+    constraint FK_Category foreign key ([Product Category Id]) references Dim_Category ([Category Id]),
+    constraint FK_Department foreign key ([Department Id]) references Dim_Department ([Department Id])
+)
+
+
+# fact sale
+CREATE TABLE [FactSale] (
+    [Order Item Id] int not null,
+	[Order Id] int,
+    [Customer Key] int,
+    [Product Key] int,
+    [Ship Key] int,
+    [Status Key] int,
+    [Purchase Key] int,
+    [Date Key] nvarchar(70),
+    [SoldAmount] real,
+    [DiscountAmount] real,
+    [ProfitAmount] real,
+    [OrderToShippedLagInDays] int,
+	CONSTRAINT PK_FactSale PRIMARY KEY ([Order Item Id])
+)
+
+
+# excute query task 
+alter table FactSale
+add constraint FK_ProductKey FOREIGN KEY ([Product Key]) references Dim_Product ([Product Key])
+
+alter table FactSale
+add constraint FK_StatusKey FOREIGN KEY ([Status Key]) references Dim_Status ([Status Key])
+
+alter table FactSale
+add constraint FK_ShipKey FOREIGN KEY ([Ship Key]) references Dim_Ship ([Ship Key])
+
+alter table FactSale
+add constraint FK_CustomerKey FOREIGN KEY ([Customer Key]) references Dim_Customer ([Customer Key])
+
+alter table FactSale
+add constraint FK_PurchaseKey FOREIGN KEY ([Purchase Key]) references Dim_Purchase ([Purchase Key])
+
+alter table FactSale
+add constraint FK_DateKey FOREIGN KEY ([Date Key]) references Dim_Date ([Date Key])
+
+# drop constraint
+
