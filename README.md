@@ -1,7 +1,7 @@
 # DATA-WAREHOUSE
 BULD DATA WAREHOUSE ANALYSIS OF SUPPLY CHAINS DATA (PHÂN TÍCH DỮ LIỆU CHUỖI CUNG ỨNG)
 ## 1. Giới thiệu:
-Bộ dữ liệu DataCo Smart Supply Chain for Big Data Analysis trên Kaggle là một tập hợp các dữ liệu về chuỗi cung ứng thông minh, bao gồm thông tin về đơn hàng, sản phẩm, khách hàng và các hoạt động vận chuyển liên quan. Bộ dữ liệu này cung cấp cho chúng ta một cái nhìn tổng quát về hoạt động của các doanh nghiệp trong lĩnh vực này và có thể được sử dụng để phân tích và tối ưu hóa các quy trình kinh doanh liên quan đến chuỗi cung ứng. Chúng tôi có thể sử dụng bộ dữ liệu này để tìm hiểu về xu hướng và mối quan hệ giữa các yếu tố khác nhau trong chuỗi cung ứng, từ đó đưa ra các khuyến nghị và giải pháp để cải thiện hiệu quả và giảm chi phí cho các hoạt động kinh doanh.
+Bộ dữ liệu DataCo Smart Supply Chain for Big Data Analysis trên Kaggle là một tập hợp các dữ liệu về chuỗi cung ứng thông minh, bao gồm thông tin về đơn hàng, sản phẩm, khách hàng và các hoạt động vận chuyển liên quan. Bộ dữ liệu này cung cấp cho chúng ta một cái nhìn tổng quát về hoạt động của các doanh nghiệp trong lĩnh vực này và có thể được sử dụng để phân tích và tối ưu hóa các quy trình kinh doanh liên quan đến chuỗi cung ứng. Tôi có thể sử dụng bộ dữ liệu này để tìm hiểu về xu hướng và mối quan hệ giữa các yếu tố khác nhau trong chuỗi cung ứng, từ đó đưa ra các khuyến nghị và giải pháp để cải thiện hiệu quả và giảm chi phí cho các hoạt động kinh doanh.
 Link Dataset: https://www.kaggle.com/datasets/shashwatwork/dataco-smart-supply-chain-for-big-data-analysis?select=DataCoSupplyChainDataset.csv
 ## 2. Lược đồ hình sao:
 ![Screenshot 2023-05-21 175015](https://github.com/thanhtin99/DATA-WAREHOUSE/assets/95009162/20f6d88d-8974-4e89-942d-b4c26139c085)
@@ -19,7 +19,7 @@ Link Dataset: https://www.kaggle.com/datasets/shashwatwork/dataco-smart-supply-c
 - Tạo Data Source từ kho dữ liệu database CoSupply_DW
 - Tạo Data Source View
 - Tạo cube, thêm measure và các dim cần thiết,tạo các phân cấp
-- Truy vấn các câu hỏi mà nhóm đưa ra bằng công cụ SSAS, Pivot Table, PowerBI
+- Truy vấn các câu hỏi bằng công cụ SSAS, Pivot Table, PowerBI
 ![image](https://github.com/thanhtin99/DATA-WAREHOUSE/assets/95009162/3a9f82c1-119c-4644-b1e1-d4a002e5474e)
 Truy vấn dữ liệu sử dụng SSAS
 ![image](https://github.com/thanhtin99/DATA-WAREHOUSE/assets/95009162/01754ffd-cfeb-4770-8f7e-2a7027c6860e)
